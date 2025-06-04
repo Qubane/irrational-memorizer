@@ -4,6 +4,8 @@ Main file
 
 import os
 
+
+CONSTANTS_PATH: str = "constants"
 CONSTANTS: list[dict[str, str]] = [
     {
         "filename": "pi.txt",
@@ -74,8 +76,10 @@ def main():
     input("> press [ENTER] to continue...")
 
     # enter a loop
+    slice_size = 2
+    with open(CONSTANTS[user_input - 1]['filename'])
     while True:
-        pass
+        print("")
 
 
 if __name__ == '__main__':
