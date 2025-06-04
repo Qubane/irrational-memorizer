@@ -10,7 +10,7 @@ def main():
         # print input message
         print(f" {'[ 1 ] Pi constant': <24} | 3.1415...")
         print(f" {'[ 2 ] Euler\'s constant': <24} | 2.7182...")
-        print(f" {'[ 3 ] square root of 2': <24} | 1.4142")
+        print(f" {'[ 3 ] square root of 2': <24} | 1.4142...")
         print(f" {'[ 4 ] Golden ratio': <24} | 1.6180...")
         print(f" [ 0 ] Exit")
         print(f"{'[ choose one of the irrational numbers ]':=^90}")
