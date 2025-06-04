@@ -110,8 +110,8 @@ def main():
                     output_length_offset = len(output) - output_indent - 1
                     continue
 
-                # add space every 6 digits
-                if idx > 0 and idx % 6 == 0:
+                # add space every 2 digits
+                if (idx - 1) % 2 == 0:
                     output += " "
 
             # make sure to go to the start of the file
