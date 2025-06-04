@@ -84,11 +84,15 @@ def main():
     clear()
 
     # enter a loop
-    slice_size = 300
+    slice_size = 4
+    current_slice = ""
     with open(f"{CONSTANTS_PATH}/{constant['filename']}", "r", encoding="ascii") as file:
         while True:
             # print out record
             print(f"{f'[ Current record is {slice_size - 2} digits! ]':=^90}")
+
+            # reset current slice
+            current_slice = ""
 
             # generate constant output
             output = f"| {constant['variable']} = "
@@ -97,6 +101,7 @@ def main():
             for idx, digit in enumerate(file.read(slice_size)):
                 # add digit
                 output += digit
+                current_slice += digit
 
                 # check if there's enough space
                 if len(output) - output_length_offset >= 84:
@@ -108,6 +113,9 @@ def main():
                 # add space every 6 digits
                 if idx > 0 and idx % 6 == 0:
                     output += " "
+
+            # make sure to go to the start of the file
+            file.seek(0)
 
             # add encasing at the end
             output += f"{' ' * (90 - len(output) + output_length_offset - 1)}|"
@@ -121,6 +129,21 @@ def main():
 
             # clear
             clear()
+
+            # Ask to repeat the digits
+            print(f"{f'[ Now enter the constant ]':=^90}")
+            user_constant = input("> ")
+
+            # if user_constant is not equal to current_slice -> exit
+            if user_constant != current_slice:
+                break
+
+            # otherwise progress forward by 2
+            slice_size += 2
+
+    # :(
+    print(f"{f'[ Sorry! You lost :< ]':=^90}")
+    print(f"{f'[ Record was {slice_size - 2} digits! ]':=^90}")
 
 
 if __name__ == '__main__':
