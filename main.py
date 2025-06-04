@@ -10,21 +10,25 @@ CONSTANTS: list[dict[str, str]] = [
     {
         "filename": "pi.txt",
         "name": "Pi constant",
+        "variable": "PI",
         "preview": "3.1415"
     },
     {
         "filename": "e.txt",
         "name": "Euler\'s constant",
+        "variable": "e",
         "preview": "2.7182"
     },
     {
         "filename": "sqrt(2).txt",
         "name": "Square Root of 2",
+        "variable": "SQRT 2",
         "preview": "1.4142"
     },
     {
         "filename": "golden ratio.txt",
         "name": "Golden ratio",
+        "variable": "PHI",
         "preview": "1.6180"
     }
 ]
@@ -77,9 +81,10 @@ def main():
 
     # enter a loop
     slice_size = 2
-    with open(CONSTANTS[user_input - 1]['filename'])
-    while True:
-        print("")
+    with open(f"{CONSTANTS_PATH}/{CONSTANTS[user_input - 1]['filename']}", "r", encoding="ascii") as file:
+        while True:
+            print(f"{f'[ Current record is {slice_size} digits! ]':=^90}")
+            print(f"| ")
 
 
 if __name__ == '__main__':
