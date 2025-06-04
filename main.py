@@ -30,7 +30,7 @@ def main():
 
     # if exit -> exit
     if user_input == 0:
-        exit(0)
+        return
 
 
 if __name__ == '__main__':
