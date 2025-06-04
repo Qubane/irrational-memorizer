@@ -55,7 +55,7 @@ def main():
             continue
 
         # if input within range -> break
-        if -1 < user_input <= 4:
+        if -1 < user_input <= len(CONSTANTS):
             break
 
     # if exit -> exit
