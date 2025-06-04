@@ -3,6 +3,9 @@ Main file
 """
 
 
+import os
+
+
 CONSTANTS: list[dict[str, str]] = [
     {
         "filename": "pi.txt",
@@ -25,6 +28,10 @@ CONSTANTS: list[dict[str, str]] = [
         "preview": "1.6180"
     }
 ]
+
+
+def clear():
+    os.system("cls" if os.name == "nt" else "clear")
 
 
 def main():
@@ -61,6 +68,10 @@ def main():
     # if exit -> exit
     if user_input == 0:
         return
+
+    # if one of the constants
+    while True:
+        user_input =
 
 
 if __name__ == '__main__':
