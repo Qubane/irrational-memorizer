@@ -4,6 +4,9 @@ Main file
 
 
 def main():
+    # initialize with 0
+    user_input = 0
+
     # print welcome message
     print(f"{'[ Welcome to the very cool irrational number memorizer ]':=^90}")
     while True:
@@ -24,6 +27,10 @@ def main():
         # if input within range -> break
         if -1 < user_input <= 4:
             break
+
+    # if exit -> exit
+    if user_input == 0:
+        exit(0)
 
 
 if __name__ == '__main__':
