@@ -75,16 +75,52 @@ def main():
         return
 
     # if one of the constants
-    print(f"{f'[ You chose {CONSTANTS[user_input - 1]['name']} ]':=^90}")
+    constant = CONSTANTS[user_input - 1]
+    print(f"{f'[ You chose {constant['name']} ]':=^90}")
     print(f"{f'[ press [CTRL + C] at any moment to exit ]':=^90}")
     input("> press [ENTER] to continue...")
 
+    # clear
+    clear()
+
     # enter a loop
-    slice_size = 2
-    with open(f"{CONSTANTS_PATH}/{CONSTANTS[user_input - 1]['filename']}", "r", encoding="ascii") as file:
+    slice_size = 300
+    with open(f"{CONSTANTS_PATH}/{constant['filename']}", "r", encoding="ascii") as file:
         while True:
-            print(f"{f'[ Current record is {slice_size} digits! ]':=^90}")
-            print(f"| ")
+            # print out record
+            print(f"{f'[ Current record is {slice_size - 2} digits! ]':=^90}")
+
+            # generate constant output
+            output = f"| {constant['variable']} = "
+            output_indent = len(output) - 1
+            output_length_offset = 0
+            for idx, digit in enumerate(file.read(slice_size)):
+                # add digit
+                output += digit
+
+                # check if there's enough space
+                if len(output) - output_length_offset >= 84:
+                    # add encasing at the end
+                    output += f"{' ' * (90 - len(output) + output_length_offset - 1)}|\n|{' ' * output_indent}"
+                    output_length_offset = len(output) - output_indent - 1
+                    continue
+
+                # add space every 6 digits
+                if idx > 0 and idx % 6 == 0:
+                    output += " "
+
+            # add encasing at the end
+            output += f"{' ' * (90 - len(output) + output_length_offset - 1)}|"
+
+            # print out the output
+            print(output)
+
+            # print ask for input
+            print("=" * 90)
+            input("> press [ENTER] when you are ready")
+
+            # clear
+            clear()
 
 
 if __name__ == '__main__':
