@@ -3,6 +3,30 @@ Main file
 """
 
 
+CONSTANTS: list[dict[str, str]] = [
+    {
+        "filename": "pi.txt",
+        "name": "Pi constant",
+        "preview": "3.1415"
+    },
+    {
+        "filename": "e.txt",
+        "name": "Euler\'s constant",
+        "preview": "2.7182"
+    },
+    {
+        "filename": "sqrt(2).txt",
+        "name": "Square Root of 2",
+        "preview": "1.4142"
+    },
+    {
+        "filename": "golden ratio.txt",
+        "name": "Golden ratio",
+        "preview": "1.6180"
+    }
+]
+
+
 def main():
     # initialize with 0
     user_input = 0
