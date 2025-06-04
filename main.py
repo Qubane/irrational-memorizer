@@ -2,9 +2,7 @@
 Main file
 """
 
-
 import os
-
 
 CONSTANTS: list[dict[str, str]] = [
     {
@@ -47,12 +45,13 @@ def main():
     while True:
         # output all constant options
         for idx, constant in enumerate(CONSTANTS):
-            print(f" [ {idx + 1: >{max_number_length}} ] "
-                  f"{constant['name']: <{max_name_length}} "
-                  f"| {constant['preview']}...")
+            message = (f"| [ {idx + 1: >{max_number_length}} ] "
+                       f"{constant['name']: <{max_name_length}} "
+                       f"| {constant['preview']}...")
+            print(f"{message: <88} |")
 
         # print input message
-        print(f" [ 0 ] Exit")
+        print(f"{f'| [ 0 ] Exit': <88} |")
         print(f"{'[ choose one of the irrational numbers ]':=^90}")
 
         # ask for input
@@ -70,8 +69,13 @@ def main():
         return
 
     # if one of the constants
+    print(f"{f'[ You chose {CONSTANTS[user_input - 1]['name']} ]':=^90}")
+    print(f"{f'[ press [CTRL + C] at any moment to exit ]':=^90}")
+    input("> press [ENTER] to continue...")
+
+    # enter a loop
     while True:
-        user_input =
+        pass
 
 
 if __name__ == '__main__':
