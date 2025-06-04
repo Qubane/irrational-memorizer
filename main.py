@@ -94,6 +94,9 @@ def main():
             # reset current slice
             current_slice = ""
 
+            # make sure to go to the start of the file
+            file.seek(0)
+
             # generate constant output
             output = f"| {constant['variable']} = "
             output_indent = len(output) - 1
@@ -114,9 +117,6 @@ def main():
                 if (idx - 1) % 2 == 0:
                     output += " "
 
-            # make sure to go to the start of the file
-            file.seek(0)
-
             # add encasing at the end
             output += f"{' ' * (90 - len(output) + output_length_offset - 1)}|"
 
@@ -136,7 +136,28 @@ def main():
 
             # if user_constant is not equal to current_slice -> exit
             if user_constant != current_slice:
-                break
+                # if user_constant is bigger
+                if len(user_constant) > len(current_slice):
+                    # if the smaller slice of user input is wrong -> break
+                    if user_constant[:len(current_slice)] != current_slice:
+                        break
+
+                    # check following digits for if they are correct
+                    else:
+                        digit = file.read(1)
+                        while user_constant[slice_size] == digit:
+                            slice_size += 1
+                            if slice_size >= len(user_constant):
+                                break
+                            digit = file.read(1)
+
+                        # if any digit is wrong -> exit
+                        else:
+                            break
+
+                # otherwise lose
+                else:
+                    break
 
             # otherwise progress forward by 2
             slice_size += 2
